@@ -11,6 +11,15 @@ I am open to the possibility that I used `wgpu` wrong, and that this code workin
 After rendering one frame (which does not visually present anything to the screen) the render surface is lost and needs to be recreated. Once it is recreated, another phoney frame is rendered and the process repeats. You can see it in the console here:
 ![image](https://user-images.githubusercontent.com/7923357/160262309-f69cb049-5faa-4d20-b15e-e4c145a8f392.png)
 
+Here's the part that repeats
+```
+2022-03-27T14:57:57.697889Z  INFO bevy_wgpu_problem_minimal_repro: Frame successfully rendered
+2022-03-27T14:57:57.699939Z ERROR bevy_wgpu_problem_minimal_repro: Frame dropped due to error getting surface texture: The underlying surface has changed, and therefore the swap chain must be updated
+2022-03-27T14:57:57.701043Z  INFO bevy_wgpu_problem_minimal_repro: Window resized to 1280x720, reconfiguring WGPU surface and render texture
+```
+
+The actual WGPU error underlying this is `The underlying surface has changed, and therefore the swap chain must be updated`.
+
 Here's what the application looks like while this is going on:
 ![image](https://user-images.githubusercontent.com/7923357/160262361-908ee059-5290-4fc5-84d7-a4bdf9582243.png)
 
