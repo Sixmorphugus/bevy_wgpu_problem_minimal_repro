@@ -1,0 +1,24 @@
+[package]
+name = "bevy_wgpu_problem_minimal_repro"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+wgpu = { git = "https://github.com/gfx-rs/wgpu" }
+pollster = "0.2.5"
+
+[dependencies.bevy]
+version = "0.6"
+# Disable the default features if there are any that you do not want
+default-features = false
+features = [
+    # These are the default features:
+    # (keep whichever you like)
+    "bevy_winit",
+    "bevy_gilrs",
+    "x11",
+    "wayland",
+    "filesystem_watcher",
+]
